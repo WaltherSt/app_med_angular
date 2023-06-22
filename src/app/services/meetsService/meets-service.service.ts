@@ -28,6 +28,14 @@ export class MeetsServiceService {
       catchError(this.handleError)
     );
   }
+
+  getDoctorAgendaByDate(data:any){
+    return this.http.get<any>(`${this.url}/meets/${data.doctor_id}/${data.date}`).pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
+
+  }
 /*
   deleteDoctor(id: string): Observable<any> {
     return this.http.delete(`${this.url}/doctors/${id}`).pipe(

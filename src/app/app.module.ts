@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -36,6 +36,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { ListMeetsComponent } from './views/admin/citas/list-meets/list-meets.component';
 import { CreateMeetComponent } from './views/admin/citas/create-meet/create-meet.component';
 
+import { DropdownModule } from 'primeng/dropdown';
+import {MultiSelectModule} from "primeng/multiselect";
+import {InputMaskModule} from "primeng/inputmask";
+import { DebounceComponent } from './components/debounce/debounce.component';
+
 
 
 @NgModule({
@@ -57,7 +62,9 @@ import { CreateMeetComponent } from './views/admin/citas/create-meet/create-meet
     EditPatienComponent,
     CreatePatienComponent,
     ListMeetsComponent,
-    CreateMeetComponent
+    CreateMeetComponent,
+    DebounceComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -65,6 +72,10 @@ import { CreateMeetComponent } from './views/admin/citas/create-meet/create-meet
     HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
+    DropdownModule,
+    FormsModule,
+    MultiSelectModule,
+    InputMaskModule
 
   ],
   providers: [PacientesService],

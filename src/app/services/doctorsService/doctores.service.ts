@@ -61,8 +61,13 @@ export class DoctoresService {
       retry(2),
       catchError(this.handleError)
     )
+  }
 
-
+  getDoctorsBySpecialty(specialty_id: String): Observable<any> {
+    return this.http.get<any>(`${this.url}/doctors/specialty/${specialty_id}`).pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
   }
 
 
