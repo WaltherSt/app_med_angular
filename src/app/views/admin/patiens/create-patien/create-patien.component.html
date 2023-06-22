@@ -1,0 +1,54 @@
+<div class=" w-full flex items-center justify-center">
+  <div class="w-full py-2">
+
+    <div
+      class="bg-white w-5/6 md:w-3/4 lg:w-2/3 xl:w-[500px] 2xl:w-[550px] mt-8 mx-auto px-16 py-8 rounded-lg shadow-2xl">
+
+      <h2 class="text-center text-2xl font-bold tracking-wide text-gray-800">Registrar Paciente</h2>
+
+      <form [formGroup]="formGroup" class="my-8 text-sm">
+        <div class="flex flex-col my-4">
+          <label for="name" class="text-gray-700">Nombres</label>
+          <input type="text" id="name" formControlName="name"
+                 class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
+          >
+        </div>
+
+        <div class="flex flex-col my-4">
+          <label for="last_name" class="text-gray-700">Apellidos</label>
+          <input type="text" id="last_name" formControlName="last_name"
+                 class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
+          >
+        </div>
+        <div class="flex flex-col my-4">
+          <label for="identification_card" class="text-gray-700">Identificación</label>
+          <input type="number" id="identification_card" formControlName="identification_card"
+                 class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
+          >
+        </div>
+        <div class="flex flex-col my-4">
+          <label for="age" class="text-gray-700">Edad</label>
+          <input type="number" id="age" formControlName="age"
+                 class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
+          >
+        </div>
+
+        <div class="flex flex-col my-4">
+          <label for="phone" class="text-gray-700">Telefono</label>
+          <input type="number" id="phone" formControlName="phone"
+                 class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
+          >
+        </div>
+
+        <div class="my-4 flex items-center justify-center space-x-4">
+          <button (click)="guardar()"
+                  class="w-full bg-sky-400 hover:bg-sky-500 rounded px-8 py-2 text-gray-100 transition duration-150 uppercase">
+            Guardar
+          </button>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</div>
