@@ -6,6 +6,8 @@ import {SpecialtyServiceService} from "../../../../services/specialtyService/spe
 import {PacientesService} from "../../../../services/patiensService/pacientes.service";
 import {MeetsServiceService} from "../../../../services/meetsService/meets-service.service";
 import * as dayjs from 'dayjs'
+import {Subject} from "rxjs";
+
 @Component({
   selector: 'app-create-meet',
   templateUrl: './create-meet.component.html',
@@ -25,6 +27,12 @@ export class CreateMeetComponent implements OnInit {
   public patients: any[] = []
   public doctors: any[] = []
   public availableHour: any[] = []
+  searchTerm = '';
+  public suggestions: any[] = []
+  private suggestionsSubscription: any;
+  private suggestionsSubject: any
+
+
   constructor(
     private route: ActivatedRoute,
     private doctoresService: DoctoresService,
@@ -33,6 +41,7 @@ export class CreateMeetComponent implements OnInit {
     private patientsService: PacientesService,
     private meetService: MeetsServiceService
   ) {
+    this.suggestionsSubject = new Subject();
 
   }
 
@@ -45,21 +54,25 @@ export class CreateMeetComponent implements OnInit {
       console.log(err)
     })
   }
+
   getSpecialties() {
     this.specialtiesService.getAll().subscribe(res => {
       this.especialidades = res.data
     })
   }
+
   getPatientsByDocument() {
     this.patientsService.getPatiens().subscribe(res => {
       this.patients = res.persons
     })
   }
+
   getDoctorBySpecialty(specialty_id: string) {
     this.doctoresService.getDoctorsBySpecialty(specialty_id).subscribe(res => {
       this.doctors = res.data
     })
   }
+
   getDoctorAgendaByDate() {
 
     const data = {
@@ -72,6 +85,8 @@ export class CreateMeetComponent implements OnInit {
       this.availableHour = this.availableHour.filter(item => !not.includes(item));
     })
   }
+
+
   verDisponibilidad() {
     const initHour = 8;
     const finalHour = 17;
@@ -104,6 +119,24 @@ export class CreateMeetComponent implements OnInit {
         this.getDoctorAgendaByDate()
       }
     })
+
+    this.formGroup.get('patient')?.valueChanges.subscribe(value => {
+      if (value != null) {
+
+        this.patientsService.getPatientsByDocument(value).subscribe(res => {
+          this.suggestions = res.data;
+        })
+
+      }
+
+    })
+
+
+    /*    this.suggestionsSubscription = this.suggestionsSubject
+          .debounceTime(500)
+          .subscribe((value: never[]) => {
+            this.suggestions = value;
+          });*/
 
   }
 }

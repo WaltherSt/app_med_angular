@@ -60,7 +60,13 @@ export class PacientesService {
       retry(2),
       catchError(this.handleError)
     )
-
-
   }
+
+  getPatientsByDocument(term: string): Observable<any> {
+    return this.http.get<any>(`${this.url}/persons/search/${term}`).pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
+  }
+
 }
