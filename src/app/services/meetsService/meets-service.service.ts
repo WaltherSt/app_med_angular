@@ -24,7 +24,6 @@ export class MeetsServiceService {
 
   getMeets(): Observable<any> {
     return this.http.get<any>(`${this.url}/meets`).pipe(
-      retry(2),
       catchError(this.handleError)
     );
   }
@@ -36,28 +35,6 @@ export class MeetsServiceService {
     );
 
   }
-/*
-  deleteDoctor(id: string): Observable<any> {
-    return this.http.delete(`${this.url}/doctors/${id}`).pipe(
-      retry(2),
-      catchError(this.handleError)
-    );
-  }
-
-  editDoctor(id: string): any {
-    return this.http.get(`${this.url}/doctors/${id}`).pipe(
-      retry(2),
-      catchError(this.handleError)
-    )
-  }
-
-  updateDoctor(id: string, data: any) {
-    return this.http.patch(`${this.url}/doctors/${id}`, data).pipe(
-      catchError(this.handleError)
-    )
-
-  }*/
-
   createMeet(data: any) {
     console.log(data)
     return this.http.post(`${this.url}/meets`, data).pipe(

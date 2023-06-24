@@ -39,7 +39,7 @@ import { CreateMeetComponent } from './views/admin/citas/create-meet/create-meet
 import { DropdownModule } from 'primeng/dropdown';
 import {MultiSelectModule} from "primeng/multiselect";
 import {InputMaskModule} from "primeng/inputmask";
-import { DebounceComponent } from './components/debounce/debounce.component';
+
 
 
 
@@ -63,7 +63,7 @@ import { DebounceComponent } from './components/debounce/debounce.component';
     CreatePatienComponent,
     ListMeetsComponent,
     CreateMeetComponent,
-    DebounceComponent,
+
 
   ],
   imports: [

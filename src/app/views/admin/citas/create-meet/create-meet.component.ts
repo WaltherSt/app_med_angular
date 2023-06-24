@@ -27,10 +27,8 @@ export class CreateMeetComponent implements OnInit {
   public patients: any[] = []
   public doctors: any[] = []
   public availableHour: any[] = []
-  searchTerm = '';
   public suggestions: any[] = []
-  private suggestionsSubscription: any;
-  private suggestionsSubject: any
+  public id_patient: string = ''
 
 
   constructor(
@@ -41,12 +39,19 @@ export class CreateMeetComponent implements OnInit {
     private patientsService: PacientesService,
     private meetService: MeetsServiceService
   ) {
-    this.suggestionsSubject = new Subject();
+
 
   }
 
   guardar() {
+
+    // seteo de nuevo el valor del forcontrol llamado 'patient' justo en el monento de dar clic en enviar formulario
+
+    this.formGroup.get('patient')?.setValue(this.id_patient)
+
+
     this.meetService.createMeet(this.formGroup.value).subscribe((res: any) => {
+      console.log(res)
       this.formGroup.reset()
       this.router.navigate(['/admin/citas'])
 
@@ -100,6 +105,15 @@ export class CreateMeetComponent implements OnInit {
     }
   }
 
+// seteo el input que tiene asociado el formcontrol llamado 'patient' y le asigno el _id del patient a una variable de clase
+  setInput(data: any) {
+    this.formGroup.get('patient')?.setValue(data.name)
+    this.id_patient = data._id;
+
+
+  }
+
+
   // Formatea la hora de la agenda para que esta quede en formato 12 Horas
   convertHours = (time: string) => dayjs(time).format('h:mm a');
 
@@ -128,6 +142,7 @@ export class CreateMeetComponent implements OnInit {
         })
 
       }
+
 
     })
 

@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PacientesService} from "../../../../services/patiensService/pacientes.service";
 
+
 @Component({
   selector: 'app-edit-patien',
   templateUrl: './edit-patien.component.html',
@@ -10,6 +11,7 @@ import {PacientesService} from "../../../../services/patiensService/pacientes.se
 })
 export class EditPatienComponent implements OnInit {
   id: string = ""
+
 
   public formGroup = new FormGroup({
     "name": new FormControl<string>(''),
@@ -48,7 +50,9 @@ export class EditPatienComponent implements OnInit {
     })
   }
 
+
   ngOnInit(): void {
+
     this.route.params.subscribe(
       (params: any) => {
 

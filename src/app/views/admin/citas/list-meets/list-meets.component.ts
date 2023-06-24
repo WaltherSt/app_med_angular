@@ -1,9 +1,5 @@
 import {Component} from '@angular/core';
-import {Location} from "@angular/common";
 import {Router} from "@angular/router";
-
-import {ToastrService} from "ngx-toastr";
-import Swal from "sweetalert2";
 import {MeetsServiceService} from "../../../../services/meetsService/meets-service.service";
 
 @Component({
@@ -21,23 +17,18 @@ export class ListMeetsComponent {
   constructor(
     private router: Router,
     private meetsServiceService: MeetsServiceService,
-    private toastr: ToastrService) {
+   ) {
   }
-
   loadData() {
-
     this.meetsServiceService.getMeets().subscribe(
       (response) => {
         this.data = response.data;
-
-      },
+        },
       (error) => {
         console.log(error);
       }
     );
   }
-
-
   ngOnInit() {
     this.loadData()
   }
