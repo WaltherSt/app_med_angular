@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+// @ts-ignore
 import {HttpClientModule} from '@angular/common/http';
+// @ts-ignore
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import {AppRoutingModule} from './app-routing.module';
@@ -19,6 +21,9 @@ import {HeaderStatsComponent} from "./components/headers/header-stats/header-sta
 import {SidebarComponent} from "./components/sidebar/sidebar.component";
 import {AdminNavbarComponent} from "./components/navbars/admin-navbar/admin-navbar.component";
 import {CardTableComponent} from "./components/cards/card-table/card-table.component";
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 //services
@@ -39,6 +44,8 @@ import { CreateMeetComponent } from './views/admin/citas/create-meet/create-meet
 import { DropdownModule } from 'primeng/dropdown';
 import {MultiSelectModule} from "primeng/multiselect";
 import {InputMaskModule} from "primeng/inputmask";
+
+
 
 
 
@@ -75,7 +82,8 @@ import {InputMaskModule} from "primeng/inputmask";
     DropdownModule,
     FormsModule,
     MultiSelectModule,
-    InputMaskModule
+    InputMaskModule,
+    BrowserAnimationsModule
 
   ],
   providers: [PacientesService],

@@ -13,9 +13,9 @@ export class CreateDoctorComponent {
 
   public formGroup = new FormGroup({
     "name": new FormControl<string>(''),
-    "last_name": new FormControl<string>(''),
+    "lastName": new FormControl<string>(''),
     "specialty": new FormControl<string>(''),
-    "consulting_room": new FormControl<string>(''),
+    "consultingRoom": new FormControl<string>(''),
     "email": new FormControl<string>(''),
   });
 

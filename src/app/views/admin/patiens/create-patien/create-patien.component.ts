@@ -13,8 +13,8 @@ import {ToastrService} from "ngx-toastr";
 export class CreatePatienComponent {
   formGroup = new FormGroup({
     "name": new FormControl<string>('',),
-    "last_name": new FormControl<string>(''),
-    "identification_card": new FormControl<number>(0),
+    "lastName": new FormControl<string>(''),
+    "identificationCard": new FormControl<number>(0),
     "age": new FormControl<number>(0),
     "phone": new FormControl<number>(0),
   });

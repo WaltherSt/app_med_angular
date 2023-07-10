@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import {PacientesService} from "../../../../services/patiensService/pacientes.service";
 
+
+
 import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-list-patien',
@@ -11,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ListPatienComponent {
   public data: any[] = [];
   public columns: string[] = ["nombres", "apellidos", "identificación", "edad","telefono", "acciones"];
-  public fields: string[] = ["name", "last_name", "identification_card", "age","phone"];
+  public fields: string[] = ["name", "lastName", "identificationCard", "age","phone"];
 
   constructor(public pacientesService: PacientesService, private toastr: ToastrService) {
     this.loadData()
@@ -20,7 +23,7 @@ export class ListPatienComponent {
   loadData() {
     this.pacientesService.getPatiens().subscribe(
       (response) => {
-        this.data = response.persons;
+        this.data = response.data;
 
       },
       (error) => {

@@ -14,7 +14,7 @@ export class ListDoctorComponent {
 
   public data: any[] = [];
   public columns: string[] = ["nombres", "apellidos", "especialidad", "consultorio", "email", "acciones"];
-  public fields: string[] = ["name", "last_name", "specialty", "consulting_room", "email"];
+  public fields: string[] = ["name", "lastName", "specialty", "consultingRoom", "email"];
 
   constructor(
     private location: Location,
@@ -27,7 +27,7 @@ export class ListDoctorComponent {
 
     this.doctoresService.getDoctors().subscribe(
       (response) => {
-        this.data = response.doctors;
+        this.data = response.data;
         console.log(this.data)
       },
       (error) => {

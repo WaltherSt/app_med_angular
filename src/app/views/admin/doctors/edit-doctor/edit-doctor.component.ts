@@ -11,13 +11,13 @@ import {SpecialtyServiceService} from "../../../../services/specialtyService/spe
   styleUrls: ['./edit-doctor.component.css']
 })
 export class EditDoctorComponent implements OnInit {
-  id: string = ""
+  _id: string = ""
 
   public formGroup = new FormGroup({
     "name": new FormControl<string>(''),
-    "last_name": new FormControl<string>(''),
-    "specialty": new FormControl<string>(''),
-    "consulting_room": new FormControl<string>(''),
+    "lastName": new FormControl<string>(''),
+    "id_specialty": new FormControl<string>(''),
+    "consultingRoom": new FormControl<string>(''),
     "email": new FormControl<string>(''),
   });
 
@@ -33,9 +33,10 @@ export class EditDoctorComponent implements OnInit {
   cargarFormulario(id: any) {
     this.doctoresService.editDoctor(id).subscribe((res: any) => {
 
-      const {doc, status} = res
-      this.formGroup.reset(doc)
-      this.id = id
+      const {data, status} = res
+      console.log(data)
+      this.formGroup.reset(data[0])
+      this._id = id
 
     }, (err: any) => {
       console.log(err)
@@ -43,7 +44,7 @@ export class EditDoctorComponent implements OnInit {
   }
 
   enviar() {
-    this.doctoresService.updateDoctor(this.id, this.formGroup.value).subscribe(res => {
+    this.doctoresService.updateDoctor(this._id, this.formGroup.value).subscribe(res => {
       this.router.navigate(['/admin/doctors'])
       console.log(res)
     }, (err: any) => {

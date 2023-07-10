@@ -10,13 +10,13 @@ import {PacientesService} from "../../../../services/patiensService/pacientes.se
   styleUrls: ['./edit-patien.component.css']
 })
 export class EditPatienComponent implements OnInit {
-  id: string = ""
+  _id: string = ""
 
 
   public formGroup = new FormGroup({
     "name": new FormControl<string>(''),
-    "last_name": new FormControl<string>(''),
-    "identification_card": new FormControl<number>(0),
+    "lastName": new FormControl<string>(''),
+    "identificationCard": new FormControl<number>(0),
     "age": new FormControl<number>(0),
     "phone": new FormControl<number>(0),
 
@@ -31,10 +31,11 @@ export class EditPatienComponent implements OnInit {
   cargarFormulario(id: any) {
 
     this.patientsService.editPatien(id).subscribe((res: any) => {
+      console.log(res)
 
-      const {doc, status} = res
-      this.formGroup.reset(doc)
-      this.id = id
+      const {data, status} = res
+      this.formGroup.reset(data)
+      this._id = id
 
     }, (err: any) => {
       console.log(err)
@@ -42,7 +43,7 @@ export class EditPatienComponent implements OnInit {
   }
 
   enviar() {
-    this.patientsService.updatePatien(this.id, this.formGroup.value).subscribe(res => {
+    this.patientsService.updatePatien(this._id, this.formGroup.value).subscribe(res => {
       this.router.navigate(['/admin/patiens'])
       console.log(res)
     }, (err: any) => {
