@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
@@ -10,8 +10,6 @@ export class SpecialtyServiceService {
 
   url: string = "http://localhost:3900/api";
   data = undefined;
-
-
   constructor(private http: HttpClient) {
 
   }
@@ -29,21 +27,18 @@ export class SpecialtyServiceService {
 
   getAll(): Observable<any> {
     return this.http.get<any>(`${this.url}/specialties`).pipe(
-      retry(2),
       catchError(this.handleError)
     );
   }
 
   deleteItem(id: string): Observable<any> {
     return this.http.delete(`${this.url}/specialties/${id}`).pipe(
-      retry(2),
       catchError(this.handleError)
     );
   }
 
   editItem(id: string): any {
     return this.http.get(`${this.url}/specialties/${id}`).pipe(
-      retry(2),
       catchError(this.handleError)
     )
   }
@@ -54,11 +49,9 @@ export class SpecialtyServiceService {
     )
 
   }
-
   createItem(data: any) {
 
     return this.http.post(`${this.url}/specialties`, data).pipe(
-      retry(2),
       catchError(this.handleError)
     )
 

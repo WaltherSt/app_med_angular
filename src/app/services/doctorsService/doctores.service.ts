@@ -29,21 +29,18 @@ export class DoctoresService {
 
   getDoctors(): Observable<any> {
     return this.http.get<any>(`${this.url}/doctors`).pipe(
-      retry(2),
       catchError(this.handleError)
     );
   }
 
   deleteDoctor(id: string): Observable<any> {
     return this.http.delete(`${this.url}/doctors/${id}`).pipe(
-      retry(2),
       catchError(this.handleError)
     );
   }
 
   editDoctor(id: string): any {
     return this.http.get(`${this.url}/doctors/${id}`).pipe(
-      retry(2),
       catchError(this.handleError)
     )
   }
@@ -58,14 +55,12 @@ export class DoctoresService {
   createDoctor(data: any) {
     console.log(data)
     return this.http.post(`${this.url}/doctors`, data).pipe(
-      retry(2),
       catchError(this.handleError)
     )
   }
 
   getDoctorsBySpecialty(specialty_id: String): Observable<any> {
     return this.http.get<any>(`${this.url}/doctors/specialty/${specialty_id}`).pipe(
-      retry(2),
       catchError(this.handleError)
     );
   }

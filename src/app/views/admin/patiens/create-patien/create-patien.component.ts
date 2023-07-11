@@ -18,8 +18,6 @@ export class CreatePatienComponent {
     "age": new FormControl<number>(0),
     "phone": new FormControl<number>(0),
   });
-
-
   constructor(
     private route: ActivatedRoute,
     private patientService: PacientesService,

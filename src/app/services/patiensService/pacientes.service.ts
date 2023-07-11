@@ -28,21 +28,18 @@ export class PacientesService {
 
   getPatiens(): Observable<any> {
     return this.http.get<any>(`${this.url}/patients`).pipe(
-      retry(2),
       catchError(this.handleError)
     );
   }
 
   deletePatien(id: string): Observable<any> {
     return this.http.delete(`${this.url}/patients/${id}`).pipe(
-      retry(2),
       catchError(this.handleError)
     );
   }
 
   editPatien(id: string): any {
     return this.http.get(`${this.url}/patients/${id}`).pipe(
-      retry(2),
       catchError(this.handleError)
     )
   }
@@ -57,14 +54,12 @@ export class PacientesService {
   createPatien(data: any) {
     console.log(data)
     return this.http.post(`${this.url}/patients`, data).pipe(
-      retry(2),
       catchError(this.handleError)
     )
   }
 
   getPatientsByDocument(term: string): Observable<any> {
     return this.http.get<any>(`${this.url}/patients/search/${term}`).pipe(
-      retry(2),
       catchError(this.handleError)
     );
   }

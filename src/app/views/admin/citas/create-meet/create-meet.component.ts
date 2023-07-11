@@ -6,7 +6,7 @@ import {SpecialtyServiceService} from "../../../../services/specialtyService/spe
 import {PacientesService} from "../../../../services/patiensService/pacientes.service";
 import {MeetsServiceService} from "../../../../services/meetsService/meets-service.service";
 import * as dayjs from 'dayjs'
-import {Subject} from "rxjs";
+
 
 @Component({
   selector: 'app-create-meet',
@@ -26,7 +26,7 @@ export class CreateMeetComponent implements OnInit {
   public especialidades: any[] = [];
   public patients: any[] = []
   public doctors: any[] = []
-  public availableHour: any[] = []
+  public availableHour: any[] = ['']
   public suggestions: any[] = []
   public id_patient: string = ''
 
@@ -51,7 +51,7 @@ export class CreateMeetComponent implements OnInit {
 
 
     this.meetService.createMeet(this.formGroup.value).subscribe((res: any) => {
-      console.log(res)
+
       this.formGroup.reset()
       this.router.navigate(['/admin/citas'])
 
@@ -80,13 +80,15 @@ export class CreateMeetComponent implements OnInit {
 
   getDoctorAgendaByDate() {
 
+    console.log(this.formGroup.get('date')?.value)
+
     const data = {
       doctor_id: this.formGroup.get('doctor')?.value,
       date: this.formGroup.get('date')?.value
     }
     this.meetService.getDoctorAgendaByDate(data).subscribe(res => {
-      // @ts-ignore
-      const not = res.meets.map((e) => e.hour)
+
+      const not = res.data.map((e: any) => e.hour)
       this.availableHour = this.availableHour.filter(item => !not.includes(item));
     })
   }

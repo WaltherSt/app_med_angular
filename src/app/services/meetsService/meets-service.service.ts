@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
@@ -10,7 +10,10 @@ export class MeetsServiceService {
 
   url: string = "http://localhost:3900/api";
   data = undefined;
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient) {
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // Error del cliente
@@ -28,17 +31,16 @@ export class MeetsServiceService {
     );
   }
 
-  getDoctorAgendaByDate(data:any){
+  getDoctorAgendaByDate(data: any) {
     return this.http.get<any>(`${this.url}/meets/${data.doctor_id}/${data.date}`).pipe(
-      retry(2),
       catchError(this.handleError)
     );
 
   }
+
   createMeet(data: any) {
     console.log(data)
     return this.http.post(`${this.url}/meets`, data).pipe(
-      retry(2),
       catchError(this.handleError)
     )
   }
