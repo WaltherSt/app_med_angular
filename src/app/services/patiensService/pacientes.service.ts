@@ -52,7 +52,7 @@ export class PacientesService {
   }
 
   createPatien(data: any) {
-    console.log(data)
+
     return this.http.post(`${this.url}/patients`, data).pipe(
       catchError(this.handleError)
     )

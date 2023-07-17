@@ -12,9 +12,7 @@ export class DoctoresService {
   data = undefined;
 
 
-  constructor(private http: HttpClient) {
-
-  }
+  constructor(private http: HttpClient) {  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -53,7 +51,7 @@ export class DoctoresService {
   }
 
   createDoctor(data: any) {
-    console.log(data)
+
     return this.http.post(`${this.url}/doctors`, data).pipe(
       catchError(this.handleError)
     )

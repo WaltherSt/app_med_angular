@@ -53,7 +53,7 @@ export class CreateMeetComponent implements OnInit {
     this.meetService.createMeet(this.formGroup.value).subscribe((res: any) => {
 
       this.formGroup.reset()
-      this.router.navigate(['/admin/citas'])
+      this.router.navigate(['/meets'])
 
     }, (err: any) => {
       console.log(err)

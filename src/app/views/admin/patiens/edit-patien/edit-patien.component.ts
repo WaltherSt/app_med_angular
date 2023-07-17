@@ -44,7 +44,7 @@ export class EditPatienComponent implements OnInit {
 
   enviar() {
     this.patientsService.updatePatien(this._id, this.formGroup.value).subscribe(res => {
-      this.router.navigate(['/admin/patiens'])
+      this.router.navigate(['/patiens'])
       console.log(res)
     }, (err: any) => {
       console.log(err)

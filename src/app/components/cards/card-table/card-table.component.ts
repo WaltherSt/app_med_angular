@@ -8,6 +8,7 @@ export class CardTableComponent {
   @Input() data: any;
   @Input() columns: any;
   @Input() fields: any;
+  @Input() isEdit: boolean = true;
   @Output() delete = new EventEmitter();
   @Output() edit = new EventEmitter();
 
@@ -20,6 +21,7 @@ export class CardTableComponent {
 
   onEdit(id: string) {
     this.edit.emit(id)
-  }}
+  }
+}
 
 

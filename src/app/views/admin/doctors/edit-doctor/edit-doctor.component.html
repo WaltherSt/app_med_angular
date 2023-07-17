@@ -37,12 +37,13 @@
 
 
         <div class="flex flex-col my-4">
-          <label for="id_specialty" class="text-gray-700">Especialidad</label>
-          <select id="id_specialty"
-                  formControlName="id_specialty"
+          <label for="specialty" class="text-gray-700">Especialidad</label>
+          <select id="specialty"
+                  formControlName="specialty"
                   class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900">
 
-            <option *ngFor="let campo of specialities" name="id_specialty" value="{{campo._id}}">{{campo.name}}
+            <option *ngFor="let campo of specialities" name="specialty" value="{{campo._id}}"
+                    [selected]="campo.name === specialty">{{campo.name}}
             </option>
           </select>
         </div>

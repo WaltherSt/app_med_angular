@@ -8,7 +8,6 @@
 
       <form [formGroup]="formGroup" class="my-8 text-sm">
 
-
           <div class="flex flex-col my-4 relative">
             <label for="patient" class="text-gray-700">Paciente</label>
             <input id="patient" formControlName="patient" type="text" placeholder="Ingrese el número de identidad"
@@ -19,11 +18,9 @@
                 <li class="flex items-center px-2 h-10 hover:bg-gray-200 border-b"
                     *ngFor="let suggestion of suggestions"
                     value="{{suggestion._id}}" (click)="setInput(suggestion)">{{suggestion.name}}</li>
-
               </div>
             </ul>
           </div>
-
 
           <div class="flex flex-col my-4">
             <label for="specialty" class="text-gray-700">Especialidad</label>
@@ -41,24 +38,18 @@
             <select id="doctor"
                     formControlName="doctor"
                     class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900">
-
-
               <option *ngFor="let campo of doctors" name="specialty" value="{{campo._id}}">{{campo.name}}</option>
             </select>
           </div>
 
-
           <div class="flex flex-col my-4">
             <label for="date" class="text-gray-700">Fecha</label>
-
             <input type="date" id="date" formControlName="date"
-                   class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
-            >
+                   class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"            >
           </div>
 
           <div class="flex flex-col my-4">
             <label for="hour" class="text-gray-700">Hora</label>
-
             <select id="hour"
                     formControlName="hour"
                     class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900">
@@ -67,7 +58,6 @@
 
           </div>
 
-
           <div class="my-4 flex items-center justify-center space-x-4">
             <button (click)="guardar()"
                     class="w-full bg-sky-400 hover:bg-sky-500 rounded px-8 py-2 text-gray-100 transition duration-150 uppercase">
@@ -75,8 +65,6 @@
             </button>
           </div>
       </form>
-
-
     </div>
   </div>
 </div>

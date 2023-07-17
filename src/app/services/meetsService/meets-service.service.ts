@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
+import {data} from "autoprefixer";
 
 @Injectable({
   providedIn: 'root'
@@ -39,8 +40,14 @@ export class MeetsServiceService {
   }
 
   createMeet(data: any) {
-    console.log(data)
+
     return this.http.post(`${this.url}/meets`, data).pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  deleteMeet(id: String) {
+    return this.http.delete(`${this.url}/meets/${id}`).pipe(
       catchError(this.handleError)
     )
   }

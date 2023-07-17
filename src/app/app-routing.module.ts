@@ -7,7 +7,7 @@ import {AdminComponent} from "./layouts/admin/admin.component";
 
 // admin views
 import {DashboardComponent} from "./views/admin/dashboard/dashboard.component";
-import {CitasComponent} from "./views/admin/citas/citas.component";
+import {CitasComponent} from "./views/admin/meets/citas.component";
 import {PacientesComponent} from "./views/admin/patiens/pacientes.component";
 import {DoctoresComponent} from "./views/admin/doctors/doctores.component";
 import {EditDoctorComponent} from "./views/admin/doctors/edit-doctor/edit-doctor.component";
@@ -16,13 +16,13 @@ import {CreateDoctorComponent} from "./views/admin/doctors/create-doctor/create-
 import {ListPatienComponent} from "./views/admin/patiens/list-patien/list-patien.component";
 import {EditPatienComponent} from "./views/admin/patiens/edit-patien/edit-patien.component";
 import {CreatePatienComponent} from "./views/admin/patiens/create-patien/create-patien.component";
-import {ListMeetsComponent} from "./views/admin/citas/list-meets/list-meets.component";
-import {CreateMeetComponent} from "./views/admin/citas/create-meet/create-meet.component";
+import {ListMeetsComponent} from "./views/admin/meets/list-meets/list-meets.component";
+import {CreateMeetComponent} from "./views/admin/meets/create-meet/create-meet.component";
 
 const routes: Routes = [
   // admin views
   {
-    path: "admin",
+    path: "",
     component: AdminComponent,
     children: [
       {path: "dashboard", component: DashboardComponent},
@@ -41,7 +41,7 @@ const routes: Routes = [
 
         ]
       },
-      {path: "citas", component: CitasComponent,children:[
+      {path: "meets", component: CitasComponent,children:[
           {path: "", component: ListMeetsComponent},
           {path: "edit/:id", component: EditPatienComponent},
           {path: "create", component: CreateMeetComponent},

@@ -28,7 +28,7 @@ export class ListDoctorComponent {
     this.doctoresService.getDoctors().subscribe(
       (response) => {
         this.data = response.data;
-        console.log(this.data)
+
       },
       (error) => {
         console.log(error);

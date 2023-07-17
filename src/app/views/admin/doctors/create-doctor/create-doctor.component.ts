@@ -20,6 +20,7 @@ export class CreateDoctorComponent {
   });
 
   public especialidades: any[] = [];
+  public error: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,18 +32,21 @@ export class CreateDoctorComponent {
   guardar() {
     this.doctoresService.createDoctor(this.formGroup.value).subscribe((res: any) => {
       this.formGroup.reset()
-      this.router.navigate(['/admin/doctors'])
+      this.router.navigate(['/doctors'])
 
     }, (err: any) => {
-      console.log(err)
+      this.error = err.message()
     })
   }
 
   getSpecialties() {
-    this.specialtiesService.getAll().subscribe(res=>{
-      this.especialidades = res.data
-      console.log(this.especialidades)
-
+    this.specialtiesService.getAll().subscribe(res => {
+      try {
+        this.especialidades = res.data
+        console.log(res.data)
+      } catch (e: any) {
+        e.error = e.message()
+      }
     })
   }
 

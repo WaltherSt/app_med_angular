@@ -5,5 +5,7 @@
 <app-card-table [data]="data"
                 [columns]="columns"
                 [fields]="fields"
-                >
+                [isEdit]="isEdit"
+                (delete)="delete($event)"
+>
 </app-card-table>

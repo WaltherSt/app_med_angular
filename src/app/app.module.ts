@@ -14,7 +14,7 @@ import {AdminComponent} from "./layouts/admin/admin.component";
 
 // admin views
 import {DashboardComponent} from "./views/admin/dashboard/dashboard.component";
-import {CitasComponent} from "./views/admin/citas/citas.component";
+import {CitasComponent} from "./views/admin/meets/citas.component";
 import {PacientesComponent} from "./views/admin/patiens/pacientes.component";
 import {DoctoresComponent} from "./views/admin/doctors/doctores.component";
 import {HeaderStatsComponent} from "./components/headers/header-stats/header-stats.component";
@@ -38,8 +38,8 @@ import {EditPatienComponent} from './views/admin/patiens/edit-patien/edit-patien
 import {CreatePatienComponent} from './views/admin/patiens/create-patien/create-patien.component';
 
 import { ToastrModule } from 'ngx-toastr';
-import { ListMeetsComponent } from './views/admin/citas/list-meets/list-meets.component';
-import { CreateMeetComponent } from './views/admin/citas/create-meet/create-meet.component';
+import { ListMeetsComponent } from './views/admin/meets/list-meets/list-meets.component';
+import { CreateMeetComponent } from './views/admin/meets/create-meet/create-meet.component';
 
 import { DropdownModule } from 'primeng/dropdown';
 import {MultiSelectModule} from "primeng/multiselect";

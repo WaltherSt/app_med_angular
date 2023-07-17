@@ -13,7 +13,7 @@
         <div class="flex justify-start gap-4">
 
 
-          <a  class="cursor-pointer hover:text-red-500" (click)="onDelete(row._id)" x-data="{ tooltip: 'Delete'}">
+          <a class="cursor-pointer hover:text-red-500" (click)="onDelete(row._id)" x-data="{ tooltip: 'Delete'}">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -30,7 +30,8 @@
               />
             </svg>
           </a>
-          <a class="cursor-pointer hover:text-yellow-500"  routerLink="edit/{{row._id}}" x-data="{ tooltip: 'Edite' }">
+          <a *ngIf="isEdit" class="cursor-pointer hover:text-yellow-500" routerLink="edit/{{row._id}}"
+             x-data="{ tooltip: 'Edite' }">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

@@ -16,12 +16,14 @@ export class EditDoctorComponent implements OnInit {
   public formGroup = new FormGroup({
     "name": new FormControl<string>(''),
     "lastName": new FormControl<string>(''),
-    "id_specialty": new FormControl<string>(''),
+    "specialty": new FormControl<string>(''),
     "consultingRoom": new FormControl<string>(''),
     "email": new FormControl<string>(''),
   });
 
   public specialities: any[] = [];
+  public specialty: String = '';
+  public id_specialty: String = ''
 
   constructor(
     private route: ActivatedRoute,
@@ -32,11 +34,12 @@ export class EditDoctorComponent implements OnInit {
 
   cargarFormulario(id: any) {
     this.doctoresService.editDoctor(id).subscribe((res: any) => {
-
       const {data, status} = res
-      console.log(data)
+      this.specialty = data[0].specialty;
+      this.id_specialty = data[0].id_specialty;
       this.formGroup.reset(data[0])
       this._id = id
+      this.formGroup.get('specialty')?.setValue(this.id_specialty.toString());
 
     }, (err: any) => {
       console.log(err)
@@ -45,13 +48,11 @@ export class EditDoctorComponent implements OnInit {
 
   enviar() {
     this.doctoresService.updateDoctor(this._id, this.formGroup.value).subscribe(res => {
-      this.router.navigate(['/admin/doctors'])
+      this.router.navigate(['/doctors'])
       console.log(res)
     }, (err: any) => {
       console.log(err)
-
     })
-
   }
 
   getSpecialties() {
@@ -66,6 +67,7 @@ export class EditDoctorComponent implements OnInit {
       (params: any) => {
         if (params.id) {
           this.cargarFormulario(params.id)
+
         }
       }
     )

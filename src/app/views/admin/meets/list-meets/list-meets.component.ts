@@ -10,28 +10,43 @@ import {MeetsServiceService} from "../../../../services/meetsService/meets-servi
 })
 export class ListMeetsComponent {
 
-
   public data: any[] = [];
   public columns: string[] = ["documento", "paciente", "especialidad", "medico", "fecha", "hora", "acciones"];
   public fields: string[] = ["patientIdentification", "patient", "specialty", "doctor", "date", "hour"];
+  public isEdit: boolean = false;
 
   constructor(
     private router: Router,
     private meetsServiceService: MeetsServiceService,
-
   ) {
   }
 
   loadData() {
-    this.meetsServiceService.getMeets().subscribe(
-      (response) => {
-        this.data = response.data;
+
+    this.meetsServiceService.getMeets().subscribe({
+        next: (response) => {
+          this.data = response.data;
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      },
+    );
+  }
+
+  delete(id: String) {
+    this.meetsServiceService.deleteMeet(id).subscribe({
+      next: (response: any) => {
+        this.data = this.data.filter(item => {
+          return item._id != id
+        })
 
       },
-      (error) => {
-        console.log(error);
+      error: (error) => {
+        console.log(error)
       }
-    );
+
+    })
   }
 
   ngOnInit() {
