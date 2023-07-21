@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SpecialtyServiceService} from "../../../../services/specialtyService/specialty-service.service";
 import {DoctoresService} from "../../../../services/doctorsService/doctores.service";
@@ -12,12 +12,13 @@ import {DoctoresService} from "../../../../services/doctorsService/doctores.serv
 export class CreateDoctorComponent {
 
   public formGroup = new FormGroup({
-    "name": new FormControl<string>(''),
-    "lastName": new FormControl<string>(''),
+    "name": new FormControl<string>('', [Validators.min(3)]),
+    "lastName": new FormControl<string>('', [Validators.min(4)]),
     "specialty": new FormControl<string>(''),
-    "consultingRoom": new FormControl<string>(''),
-    "email": new FormControl<string>(''),
+    "consultingRoom": new FormControl<string>('', [Validators.min(2)]),
+    "email": new FormControl<string>('', [Validators.email]),
   });
+
 
   public especialidades: any[] = [];
   public error: any;
@@ -30,6 +31,7 @@ export class CreateDoctorComponent {
   }
 
   guardar() {
+
     this.doctoresService.createDoctor(this.formGroup.value).subscribe((res: any) => {
       this.formGroup.reset()
       this.router.navigate(['/doctors'])

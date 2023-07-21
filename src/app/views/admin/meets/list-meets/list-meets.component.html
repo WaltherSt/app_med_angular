@@ -1,11 +1,10 @@
 <div class="w-full flex flex-row-reverse ">
-  <a class="bg-sky-400 p-3 rounded text-white hover:bg-sky-500 text-sm " routerLink="create">Crear Cita</a>
+  <a class="bg-sky-400 p-3 rounded text-white hover:bg-sky-500 text-sm " routerLink="create">Registrar Cita</a>
 </div>
 
 <app-card-table [data]="data"
                 [columns]="columns"
                 [fields]="fields"
                 [isEdit]="isEdit"
-                (delete)="delete($event)"
->
+                (delete)="delete($event)">
 </app-card-table>

@@ -11,11 +11,11 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class CreatePatienComponent {
   formGroup = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
-    lastName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
-    identificationCard: new FormControl(0, Validators.required),
-    age: new FormControl(0, [Validators.required, Validators.min(18), Validators.max(100)]),
-    phone: new FormControl(0, Validators.required),
+    name: new FormControl('', [Validators.pattern(/^[a-zA-Z\s]*$/), Validators.min(3)]),
+    lastName: new FormControl('', [Validators.pattern(/^[a-zA-Z\s]*$/), Validators.min(3)]),
+    identificationCard: new FormControl(0, [Validators.min(8)]),
+    age: new FormControl(0, [Validators.min(18), Validators.max(100)]),
+    phone: new FormControl(0, [Validators.min(7)]),
   });
 
   constructor(

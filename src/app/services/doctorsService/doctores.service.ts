@@ -8,7 +8,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
   providedIn: 'root'
 })
 export class DoctoresService {
-  url: string = "http://localhost:3900/api";
+  url: string = "https://backendmedjava-production.up.railway.app/api";
   data = undefined;
 
 

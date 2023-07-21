@@ -34,7 +34,7 @@ export class ListMeetsComponent {
     );
   }
 
-  delete(id: String) {
+  delete(id: string) {
     this.meetsServiceService.deleteMeet(id).subscribe({
       next: (response: any) => {
         this.data = this.data.filter(item => {

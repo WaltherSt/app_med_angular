@@ -8,6 +8,7 @@ import {MeetsServiceService} from "../../../../services/meetsService/meets-servi
 import * as dayjs from 'dayjs'
 
 
+
 @Component({
   selector: 'app-create-meet',
   templateUrl: './create-meet.component.html',
@@ -29,6 +30,8 @@ export class CreateMeetComponent implements OnInit {
   public availableHour: any[] = ['']
   public suggestions: any[] = []
   public id_patient: string = ''
+
+  public minDate: any = dayjs(new Date()).format('YYYY-MM-DD');
 
 
   constructor(
@@ -149,11 +152,11 @@ export class CreateMeetComponent implements OnInit {
     })
 
 
-    /*    this.suggestionsSubscription = this.suggestionsSubject
-          .debounceTime(500)
-          .subscribe((value: never[]) => {
-            this.suggestions = value;
-          });*/
+    /*     this.suggestionsSubscription = this.suggestionsSubject
+           .debounceTime(500)
+           .subscribe((value: never[]) => {
+             this.suggestions = value;
+           });*/
 
   }
 }

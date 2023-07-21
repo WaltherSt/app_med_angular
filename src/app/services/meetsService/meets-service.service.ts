@@ -9,7 +9,7 @@ import {data} from "autoprefixer";
 })
 export class MeetsServiceService {
 
-  url: string = "http://localhost:3900/api";
+  url: string = "https://backendmedjava-production.up.railway.app/api";
   data = undefined;
 
   constructor(private http: HttpClient) {
@@ -46,7 +46,7 @@ export class MeetsServiceService {
     )
   }
 
-  deleteMeet(id: String) {
+  deleteMeet(id: string) {
     return this.http.delete(`${this.url}/meets/${id}`).pipe(
       catchError(this.handleError)
     )

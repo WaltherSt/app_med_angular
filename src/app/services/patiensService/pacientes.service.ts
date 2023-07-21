@@ -8,7 +8,7 @@ import {catchError, retry} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PacientesService {
-  url: string = "http://localhost:3900/api";
+  url: string = "https://backendmedjava-production.up.railway.app/api";
   data = undefined;
 
   constructor(private http: HttpClient) {
