@@ -1,15 +1,19 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
-import {catchError, retry} from "rxjs/operators";
+import {catchError} from "rxjs/operators";
+import {environment} from "../../../environments/environment";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpecialtyServiceService {
 
-  url: string = "https://backendmedjava-production.up.railway.app/api";
+  url: string = environment.urlBackend;
+
   data = undefined;
+
   constructor(private http: HttpClient) {
 
   }
@@ -49,6 +53,7 @@ export class SpecialtyServiceService {
     )
 
   }
+
   createItem(data: any) {
 
     return this.http.post(`${this.url}/specialties`, data).pipe(

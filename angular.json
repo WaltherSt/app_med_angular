@@ -27,14 +27,18 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "dayjs",
+              "sweetalert2"
+            ]
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/dev.ts",
-                  "with": "src/environments/prod.ts"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ],
               "budgets": [
@@ -54,8 +58,8 @@
             "development": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/dev.ts",
-                  "with": "src/environments/dev.ts"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
                 }
               ],
               "buildOptimizer": false,
