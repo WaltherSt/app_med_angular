@@ -1,7 +1,7 @@
 export const environment = {
   environment: 'production',
   production: true,
-  urlBackend: 'https://backendmedjava-production.up.railway.app/api',
+  urlBackend: 'https://appmed-backend.azurewebsites.net/api',
 };
 
 /* export const environment = {

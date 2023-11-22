@@ -1,5 +1,5 @@
 export const environment = {
   environment: 'develop',
   production: false,
-  urlBackend: 'https://backendmedjava-production.up.railway.app/api',
+  urlBackend: 'https://appmed-backend.azurewebsites.net/api',
 };
